@@ -1,4 +1,4 @@
-class ArrayLinkedList {
+class stackLinkedList {
      class Node{
          int data;
          Node next;
@@ -9,7 +9,7 @@ class ArrayLinkedList {
      }
      Node top;
      //creating constructor
-     ArrayLinkedList(){
+    stackLinkedList(){
          top=null;
      }
      
@@ -39,7 +39,7 @@ class ArrayLinkedList {
 class Main{
 
 	public static void main(String[] args) {
-		ArrayLinkedList stack = new ArrayLinkedList();
+		stackLinkedList stack = new stackLinkedList();
 		stack.push(8);
 		stack.push(9);
 		stack.push(7);
