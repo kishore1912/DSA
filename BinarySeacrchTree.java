@@ -65,18 +65,64 @@ class BinarySeacrchTree
             return search(root.right,val);
         }
     }
+    
+    public Node delete(Node root,int val)
+    {
+        if(root==null)
+        {
+            return root;
+        }
+       
+        if(val>root.key)
+        {
+            root.right=delete(root.right,val);
+        }
+        
+        else if(val<root.key)
+        {
+            root.left=delete(root.left,val);
+        }
+        else
+        {
+            if(root.right==null)
+            {
+                return root.left;
+            }
+            else if((root.left==null))
+            {
+                return root.right;
+            }
+            else
+            {
+                root.key=min(root.right);
+                root.right=delete(root.right,root.key);
+            }
+        }
+        return root;
+    }
+    public int min(Node root)
+    {
+        int minvalue=root.key;
+        while(root.left!=null)
+        {
+            minvalue=root.left.key;
+            root=root.left;
+        }
+        return minvalue;
+    }
 }
 class Main{
     public static void main(String arge[])
     {
         BinarySeacrchTree bst = new BinarySeacrchTree(7);
-        bst.insert(bst.root,8);
-        bst.insert(4);
-        bst.insert(6);
-        bst.insert(9);
-        bst.insert(1);
-        bst.insert(14);
-        bst.insert(10);
+        bst.insert(bst.root,10);
+        bst.insert(20);
+        bst.insert(25);
+        bst.insert(60);
+        bst.insert(70);
+        bst.insert(90);
+        bst.insert(80);
+        bst.insert(75);
         bst.inorder(bst.root);
         if(bst.search(bst.root,7)==null)
         {
@@ -86,6 +132,8 @@ class Main{
         {
             System.out.println("f");
         }
+        bst.delete(bst.root,70);
+        bst.inorder(bst.root);
         
     }
 }
